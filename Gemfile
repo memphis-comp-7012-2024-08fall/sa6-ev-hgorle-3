@@ -6,7 +6,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '3.1.2'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem 'rails', '~> 7.0.7'
+gem 'rails', '~> 7.0.8', '>= 7.0.8.4'
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem 'sprockets-rails'
@@ -30,7 +30,7 @@ gem 'stimulus-rails'
 gem 'jbuilder'
 
 # Use Redis adapter to run Action Cable in production
-gem 'redis', '~> 4.0'
+# gem "redis", "~> 4.0"
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
@@ -70,7 +70,6 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem 'capybara'
   gem 'selenium-webdriver'
-  gem 'webdrivers'
 end
 
 #
@@ -91,3 +90,29 @@ gem 'bootswatch', github: 'thomaspark/bootswatch', tag: 'v5.2.3'
 
 # Bootstrap-styled rails form helpers
 gem 'bootstrap_form', '~> 5.2.3'
+
+# Testing framework
+gem 'rspec-rails', '~> 6.1.3', group: %i[development test]
+
+# Fixtures replacement
+gem 'factory_bot_rails', group: %i[development test]
+
+# Autorun tests in development with 'bundle exec guard init rspec' && 'bundle exec guard'
+gem 'guard-rspec', require: false, group: %i[development test]
+
+# Adds controller testing assertions
+gem 'rails-controller-testing', group: %i[development test]
+
+# Ruby static code analyzer (a.k.a. linter) and code formatter
+# gem 'rubocop', require: false, group: %i[development test]
+
+# Rubocop extensions
+gem 'rubocop-capybara', require: false, group: %i[development test]
+gem 'rubocop-factory_bot', require: false, group: %i[development test]
+gem 'rubocop-rails', require: false, group: %i[development test]
+gem 'rubocop-rspec', require: false, group: %i[development test]
+gem 'rubocop-rspec_rails', require: false, group: %i[development test]
+
+# Lint your ERB or HTML files
+gem 'erb_lint', require: false, group: %i[development test]
+gem 'htmlbeautifier', require: false, group: %i[development test]
