@@ -1,4 +1,6 @@
 class BlogPostsController < ApplicationController
+  before_action :authenticate_user!, except: [:index]
+
   def index
     @blog_posts = BlogPost.order(created_at: :desc)
     render :index
@@ -15,7 +17,7 @@ class BlogPostsController < ApplicationController
   end
 
   def create
-    @blog_post = BlogPost.new(params.require(:blog_post).permit(:title, :body))
+    @blog_post = current_user.BlogPost.new(params.require(:blog_post).permit(:title, :body))
     if @blog_post.save
       flash[:success] = 'Blog post was successfully created.'
       redirect_to blog_post_path(@blog_post)
